@@ -17,7 +17,9 @@ function Form() {
           <button className="duration-350 rounded px-2 py-1 text-neutral-400 transition hover:text-neutral-700">
             Back
           </button>
-          <button>Continue</button>
+          <button className="bg duration-350 flex items-center justify-center rounded-full bg-blue-500 py-1.5 px-3.5 font-medium tracking-tight text-white transition hover:bg-blue-600 active:bg-blue-700">
+            Continue
+          </button>
         </div>
       </div>
     </form>
