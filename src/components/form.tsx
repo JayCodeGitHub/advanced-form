@@ -1,7 +1,7 @@
 function Form() {
   return (
     <form>
-      <h1>Advanced Form</h1>
+      <h1 className="text-white">Advanced Form</h1>
     </form>
   );
 }

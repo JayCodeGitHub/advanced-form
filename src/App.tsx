@@ -2,7 +2,7 @@ import Form from "./components/form";
 
 function App() {
   return (
-    <main>
+    <main className="w-screen h-screen bg-gray-900 flex justify-center items-center">
       <Form />
     </main>
   );
