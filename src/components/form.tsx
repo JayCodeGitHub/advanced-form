@@ -1,23 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useMultiStepForm } from "../hooks/useMultiStepForm";
+import { useError } from "../hooks/useError";
 import Step from "./step";
-
-const initialError = {
-  firstName: "",
-  lastName: "",
-  phone: "",
-  email: "",
-  budget: "",
-  informations: "",
-};
 
 function Form() {
   let [step, setStep] = useState(1);
 
   const { form, updateField } = useMultiStepForm();
-
-  const [error, setError] = useState(initialError);
+  const { error, setError, initialError } = useError();
 
   const stepBack = () => {
     setStep(step < 2 ? step : step - 1);
