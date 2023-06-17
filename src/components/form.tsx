@@ -4,8 +4,17 @@ import Step from "./step";
 
 function Form() {
   let [step, setStep] = useState(1);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    console.log(step);
+  };
   return (
-    <form className="mx-auto w-full max-w-md rounded-lg bg-white shadow-xl">
+    <form
+      onSubmit={handleSubmit}
+      className="mx-auto w-full max-w-md rounded-lg bg-white shadow-xl"
+    >
       <div className="flex justify-between rounded p-8">
         <Step step={1} currentStep={step} />
         <Step step={2} currentStep={step} />
@@ -57,8 +66,8 @@ function Form() {
             Back
           </button>
           <motion.button
-            onClick={() => setStep(step > 5 ? step : step + 1)}
-            type={step > 5 ? "submit" : "button"}
+            onClick={() => setStep(step >= 5 ? step : step + 1)}
+            type={step >= 5 ? "submit" : "button"}
             className="bg duration-350 flex items-center justify-center rounded-full bg-blue-500 py-1.5 px-3.5 font-medium tracking-tight text-white transition hover:bg-blue-600 active:bg-blue-700"
           >
             {step > 4 ? "Submit" : "Continue"}
