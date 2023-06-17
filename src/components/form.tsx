@@ -24,33 +24,49 @@ function Form() {
       <div className="space-y-2 px-8">
         {step === 1 ? (
           <>
-            <div className="h-4 w-5/6 rounded bg-neutral-100" />
+            <input
+              name="fname"
+              placeholder="First Name"
+              className="border-2 border-neutral-100"
+            />
+            <input
+              name="lname"
+              placeholder="Last Name"
+              className="border-2 border-neutral-100"
+            />
           </>
         ) : step === 2 ? (
           <>
-            <div className="h-4 w-5/6 rounded bg-neutral-100" />
-            <div className="h-4 rounded bg-neutral-100" />
+            <input
+              name="phone"
+              placeholder="Phone"
+              className="border-2 border-neutral-100"
+            />
+            <input
+              name="email"
+              placeholder="Email"
+              className="border-2 border-neutral-100"
+            />
           </>
         ) : step === 3 ? (
           <>
-            <div className="h-4 w-5/6 rounded bg-neutral-100" />
-            <div className="h-4 rounded bg-neutral-100" />
-            <div className="h-4 w-4/6 rounded bg-neutral-100" />
+            <input
+              name="budget"
+              placeholder="Estimated budget"
+              className="border-2 border-neutral-100"
+            />
           </>
         ) : step === 4 ? (
           <>
-            <div className="h-4 w-5/6 rounded bg-neutral-100" />
-            <div className="h-4 rounded bg-neutral-100" />
-            <div className="h-4 w-4/6 rounded bg-neutral-100" />
-            <div className="h-4 w-4/6 rounded bg-neutral-100" />
+            <textarea
+              name="informations"
+              placeholder="Additional information"
+              className="border-2 border-neutral-100"
+            />
           </>
         ) : step === 5 ? (
           <>
-            <div className="h-4 w-5/6 rounded bg-neutral-100" />
-            <div className="h-4 rounded bg-neutral-100" />
-            <div className="h-4 w-4/6 rounded bg-neutral-100" />
-            <div className="h-4 w-4/6 rounded bg-neutral-100" />
-            <div className="h-4 w-4/6 rounded bg-neutral-100" />
+            <div className="h-4 w-5/6 rounded bg-neutral-100">summary</div>
           </>
         ) : null}
       </div>
