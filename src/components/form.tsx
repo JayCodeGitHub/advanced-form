@@ -5,10 +5,33 @@ import Step from "./step";
 function Form() {
   let [step, setStep] = useState(1);
 
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    budget: "",
+    informations: "",
+  });
+
+  const updateField = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (step === 5) {
+      return null;
+    }
 
-    console.log(step);
+    console.log(form);
   };
   return (
     <form
@@ -25,19 +48,21 @@ function Form() {
         {step === 1 ? (
           <>
             <motion.input
-              name="fname"
+              name="firstName"
               placeholder="First Name"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
+              onChange={updateField}
               className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
             <motion.input
-              name="lname"
+              name="lastName"
               placeholder="Last Name"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
+              onChange={updateField}
               className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
           </>
@@ -49,6 +74,7 @@ function Form() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
+              onChange={updateField}
               className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
             <motion.input
@@ -57,6 +83,7 @@ function Form() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
+              onChange={updateField}
               className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
           </>
@@ -68,6 +95,7 @@ function Form() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
+              onChange={updateField}
               className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
           </>
@@ -80,6 +108,7 @@ function Form() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
+              onChange={updateField}
               className="border-2 border-neutral-100 w-full rounded-lg p-2 h-full"
             />
           </>
@@ -107,13 +136,23 @@ function Form() {
           >
             Back
           </button>
-          <motion.button
-            onClick={() => setStep(step >= 5 ? step : step + 1)}
-            type={step >= 5 ? "submit" : "button"}
-            className="bg duration-350 flex items-center justify-center rounded-full bg-blue-500 py-1.5 px-3.5 font-medium tracking-tight text-white transition hover:bg-blue-600 active:bg-blue-700"
-          >
-            {step > 4 ? "Submit" : "Continue"}
-          </motion.button>
+          {step >= 5 ? (
+            <motion.button
+              type="submit"
+              onClick={() => setStep(6)}
+              className="bg duration-350 flex items-center justify-center rounded-full bg-blue-500 py-1.5 px-3.5 font-medium tracking-tight text-white transition hover:bg-blue-600 active:bg-blue-700"
+            >
+              Submit
+            </motion.button>
+          ) : (
+            <motion.button
+              type="button"
+              onClick={() => setStep(step > 5 ? step : step + 1)}
+              className="bg duration-350 flex items-center justify-center rounded-full bg-blue-500 py-1.5 px-3.5 font-medium tracking-tight text-white transition hover:bg-blue-600 active:bg-blue-700"
+            >
+              Continue
+            </motion.button>
+          )}
         </div>
       </div>
     </form>
