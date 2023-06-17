@@ -1,7 +1,11 @@
-function Step() {
+interface StepProps {
+  step: number;
+}
+
+function Step({ step }: StepProps) {
   return (
     <div>
-      <h1>Step</h1>
+      <span>{step}</span>
     </div>
   );
 }

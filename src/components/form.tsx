@@ -1,11 +1,13 @@
+import Step from "./step";
+
 function Form() {
   return (
     <form className="mx-auto w-full max-w-md rounded-lg bg-white shadow-xl">
       <div className="flex justify-between rounded p-8">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
+        <Step step={1} />
+        <Step step={2} />
+        <Step step={3} />
+        <Step step={4} />
       </div>
       <div className="space-y-2 px-8">
         <div className="h-4 w-5/6 rounded bg-neutral-100" />
