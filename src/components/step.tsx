@@ -1,3 +1,5 @@
+import CheckIcon from "./checkIcon";
+
 interface StepProps {
   step: number;
   currentStep: number;
@@ -21,7 +23,11 @@ function Step({ step, currentStep }: StepProps) {
       } flex h-10 w-10 items-center justify-center rounded-full border-2 font-semibold`}
     >
       <div className="flex items-center justify-center">
-        <span>{step}</span>
+        {status === "complete" ? (
+          <CheckIcon className="h-6 w-6 text-white" />
+        ) : (
+          <span>{step}</span>
+        )}
       </div>
     </div>
   );
