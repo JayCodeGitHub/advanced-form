@@ -21,18 +21,18 @@ function Form() {
         <Step step={3} currentStep={step} />
         <Step step={4} currentStep={step} />
       </div>
-      <div className="space-y-2 px-8">
+      <div className="space-y-2 px-8 flex justify-start flex-col gap-2 h-36">
         {step === 1 ? (
           <>
             <input
               name="fname"
               placeholder="First Name"
-              className="border-2 border-neutral-100"
+              className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
             <input
               name="lname"
               placeholder="Last Name"
-              className="border-2 border-neutral-100"
+              className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
           </>
         ) : step === 2 ? (
@@ -40,12 +40,12 @@ function Form() {
             <input
               name="phone"
               placeholder="Phone"
-              className="border-2 border-neutral-100"
+              className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
             <input
               name="email"
               placeholder="Email"
-              className="border-2 border-neutral-100"
+              className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
           </>
         ) : step === 3 ? (
@@ -53,15 +53,16 @@ function Form() {
             <input
               name="budget"
               placeholder="Estimated budget"
-              className="border-2 border-neutral-100"
+              className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
           </>
         ) : step === 4 ? (
           <>
             <textarea
               name="informations"
+              maxLength={250}
               placeholder="Additional information"
-              className="border-2 border-neutral-100"
+              className="border-2 border-neutral-100 w-full rounded-lg p-2 h-full"
             />
           </>
         ) : step === 5 ? (
