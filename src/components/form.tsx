@@ -14,6 +14,25 @@ function Form() {
     informations: "",
   });
 
+  const [error, setError] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    budget: "",
+    informations: "",
+  });
+
+  const stepBack = () => {
+    setStep(step < 2 ? step : step - 1);
+    console.log("back");
+  };
+
+  const stepContinue = () => {
+    setStep(step > 5 ? step : step + 1);
+    console.log("Continue");
+  };
+
   const updateField = (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -129,7 +148,7 @@ function Form() {
         <div className="mt-10 flex justify-between">
           <button
             type="button"
-            onClick={() => setStep(step < 2 ? step : step - 1)}
+            onClick={stepBack}
             className={`${
               step === 1 ? "pointer-events-none opacity-50" : ""
             } duration-350 rounded px-2 py-1 text-neutral-400 transition hover:text-neutral-700`}
@@ -147,7 +166,7 @@ function Form() {
           ) : (
             <motion.button
               type="button"
-              onClick={() => setStep(step > 5 ? step : step + 1)}
+              onClick={stepContinue}
               className="bg duration-350 flex items-center justify-center rounded-full bg-blue-500 py-1.5 px-3.5 font-medium tracking-tight text-white transition hover:bg-blue-600 active:bg-blue-700"
             >
               Continue
