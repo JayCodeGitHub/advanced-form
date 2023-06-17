@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useMultiStepForm } from "../hooks/useMultiStepForm";
 import Step from "./step";
 
 const initialError = {
@@ -14,14 +15,7 @@ const initialError = {
 function Form() {
   let [step, setStep] = useState(1);
 
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    email: "",
-    budget: "",
-    informations: "",
-  });
+  const { form, setForm } = useMultiStepForm();
 
   const [error, setError] = useState(initialError);
 
