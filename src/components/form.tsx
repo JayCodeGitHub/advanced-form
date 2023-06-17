@@ -2,6 +2,15 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Step from "./step";
 
+const initialError = {
+  firstName: "",
+  lastName: "",
+  phone: "",
+  email: "",
+  budget: "",
+  informations: "",
+};
+
 function Form() {
   let [step, setStep] = useState(1);
 
@@ -14,14 +23,7 @@ function Form() {
     informations: "",
   });
 
-  const [error, setError] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    email: "",
-    budget: "",
-    informations: "",
-  });
+  const [error, setError] = useState(initialError);
 
   const stepBack = () => {
     setStep(step < 2 ? step : step - 1);
@@ -29,7 +31,48 @@ function Form() {
   };
 
   const stepContinue = () => {
-    setStep(step > 5 ? step : step + 1);
+    let valid = true;
+    if (step === 1) {
+      if (!form.firstName) {
+        setError({ ...initialError, firstName: "First name is required" });
+        valid = false;
+      } else if (!form.lastName) {
+        setError({ ...initialError, lastName: "Last name is required" });
+        valid = false;
+      }
+    } else if (step === 2) {
+      if (!form.phone) {
+        setError({ ...initialError, phone: "Phone Number is required" });
+        valid = false;
+      } else if (!/^\+\d+\s\d{3}\s\d{3}\s\d{3}$/.test(form.phone)) {
+        setError({
+          ...initialError,
+          phone: "Please use correct formatting. Example: +48 123 456 789",
+        });
+        valid = false;
+      } else if (!form.email) {
+        setError({ ...initialError, email: "Email is required" });
+        valid = false;
+      } else if (
+        !/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(form.email)
+      ) {
+        setError({
+          ...initialError,
+          email: "Please use correct formatting. Example: example@example.com",
+        });
+        valid = false;
+      }
+    } else if (step === 3) {
+      if (!form.budget) {
+        setError({ ...initialError, budget: "Budget is required" });
+        valid = false;
+      }
+    }
+
+    if (valid) {
+      setStep(step > 5 ? step : step + 1);
+      setError(initialError);
+    }
     console.log("Continue");
   };
 
@@ -66,6 +109,7 @@ function Form() {
       <div className="space-y-2 px-8 flex justify-start flex-col gap-2 h-36">
         {step === 1 ? (
           <>
+            <span>{error.firstName}</span>
             <motion.input
               name="firstName"
               value={form.firstName}
@@ -76,6 +120,7 @@ function Form() {
               onChange={updateField}
               className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
+            <span>{error.lastName}</span>
             <motion.input
               name="lastName"
               value={form.lastName}
@@ -89,6 +134,7 @@ function Form() {
           </>
         ) : step === 2 ? (
           <>
+            <span>{error.phone}</span>
             <motion.input
               name="phone"
               value={form.phone}
@@ -99,6 +145,7 @@ function Form() {
               onChange={updateField}
               className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
+            <span>{error.email}</span>
             <motion.input
               name="email"
               value={form.email}
@@ -112,8 +159,12 @@ function Form() {
           </>
         ) : step === 3 ? (
           <>
+            <span>{error.budget}</span>
             <motion.input
               name="budget"
+              type="number"
+              min="0"
+              max="99999"
               value={form.budget}
               placeholder="Estimated budget"
               initial={{ opacity: 0 }}
