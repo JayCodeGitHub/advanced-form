@@ -68,6 +68,7 @@ function Form() {
           <>
             <motion.input
               name="firstName"
+              value={form.firstName}
               placeholder="First Name"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -77,6 +78,7 @@ function Form() {
             />
             <motion.input
               name="lastName"
+              value={form.lastName}
               placeholder="Last Name"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -89,6 +91,7 @@ function Form() {
           <>
             <motion.input
               name="phone"
+              value={form.phone}
               placeholder="Phone"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -98,6 +101,7 @@ function Form() {
             />
             <motion.input
               name="email"
+              value={form.email}
               placeholder="Email"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -110,6 +114,7 @@ function Form() {
           <>
             <motion.input
               name="budget"
+              value={form.budget}
               placeholder="Estimated budget"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -122,6 +127,7 @@ function Form() {
           <>
             <motion.textarea
               name="informations"
+              value={form.informations}
               maxLength={250}
               placeholder="Additional information"
               initial={{ opacity: 0 }}
