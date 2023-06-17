@@ -15,13 +15,12 @@ const initialError = {
 function Form() {
   let [step, setStep] = useState(1);
 
-  const { form, setForm } = useMultiStepForm();
+  const { form, updateField } = useMultiStepForm();
 
   const [error, setError] = useState(initialError);
 
   const stepBack = () => {
     setStep(step < 2 ? step : step - 1);
-    console.log("back");
   };
 
   const stepContinue = () => {
@@ -67,18 +66,6 @@ function Form() {
       setStep(step > 5 ? step : step + 1);
       setError(initialError);
     }
-    console.log("Continue");
-  };
-
-  const updateField = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -86,9 +73,8 @@ function Form() {
     if (step === 5) {
       return null;
     }
-
-    console.log(form);
   };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -190,7 +176,7 @@ function Form() {
               transition={{ duration: 0.2 }}
               className="h-4 w-5/6 rounded bg-neutral-100"
             >
-              summary
+              <span>{form.lastName}</span>
             </motion.div>
           </>
         ) : null}

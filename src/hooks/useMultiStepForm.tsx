@@ -11,5 +11,17 @@ const initialForm = {
 
 export function useMultiStepForm() {
   const [form, setForm] = useState(initialForm);
-  return { form, setForm };
+
+  const updateField = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  return { form, setForm, updateField };
 }
