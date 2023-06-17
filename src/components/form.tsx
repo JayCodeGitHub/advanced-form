@@ -24,50 +24,75 @@ function Form() {
       <div className="space-y-2 px-8 flex justify-start flex-col gap-2 h-36">
         {step === 1 ? (
           <>
-            <input
+            <motion.input
               name="fname"
               placeholder="First Name"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2 }}
               className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
-            <input
+            <motion.input
               name="lname"
               placeholder="Last Name"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2 }}
               className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
           </>
         ) : step === 2 ? (
           <>
-            <input
+            <motion.input
               name="phone"
               placeholder="Phone"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2 }}
               className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
-            <input
+            <motion.input
               name="email"
               placeholder="Email"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2 }}
               className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
           </>
         ) : step === 3 ? (
           <>
-            <input
+            <motion.input
               name="budget"
               placeholder="Estimated budget"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2 }}
               className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
           </>
         ) : step === 4 ? (
           <>
-            <textarea
+            <motion.textarea
               name="informations"
               maxLength={250}
               placeholder="Additional information"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2 }}
               className="border-2 border-neutral-100 w-full rounded-lg p-2 h-full"
             />
           </>
         ) : step === 5 ? (
           <>
-            <div className="h-4 w-5/6 rounded bg-neutral-100">summary</div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2 }}
+              className="h-4 w-5/6 rounded bg-neutral-100"
+            >
+              summary
+            </motion.div>
           </>
         ) : null}
       </div>
