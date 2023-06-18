@@ -78,7 +78,7 @@ function Form() {
         <Step step={3} currentStep={step} />
         <Step step={4} currentStep={step} />
       </div>
-      <div className="flex flex-col justify-start gap-2 px-8 space-y-2 h-36">
+      <div className="flex flex-col justify-start gap-2 px-8 space-y-2 h-44">
         {step === 1 ? (
           <>
             <Input
