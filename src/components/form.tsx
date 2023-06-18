@@ -18,6 +18,8 @@ function Form() {
 
   const stepContinue = () => {
     let valid = true;
+
+    // Check setp 1
     if (step === 1) {
       if (!form.firstName) {
         setError({ ...initialError, firstName: "First name is required" });
@@ -26,6 +28,8 @@ function Form() {
         setError({ ...initialError, lastName: "Last name is required" });
         valid = false;
       }
+
+      // Check setp 2
     } else if (step === 2) {
       if (!form.phone) {
         setError({ ...initialError, phone: "Phone Number is required" });
@@ -48,6 +52,8 @@ function Form() {
         });
         valid = false;
       }
+
+      // Check setp 3
     } else if (step === 3) {
       if (!form.budget) {
         setError({ ...initialError, budget: "Budget is required" });
