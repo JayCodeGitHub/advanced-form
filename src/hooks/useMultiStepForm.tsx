@@ -23,5 +23,5 @@ export function useMultiStepForm() {
     });
   };
 
-  return { form, setForm, updateField };
+  return { form, setForm, updateField, initialForm };
 }

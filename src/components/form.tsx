@@ -4,11 +4,12 @@ import { useMultiStepForm } from "../hooks/useMultiStepForm";
 import { useError } from "../hooks/useError";
 import Input from "./input";
 import Step from "./step";
+import axios from "axios";
 
 function Form() {
   let [step, setStep] = useState(1);
 
-  const { form, updateField } = useMultiStepForm();
+  const { form, setForm, updateField, initialForm } = useMultiStepForm();
   const { error, setError, initialError } = useError();
 
   const stepBack = () => {
@@ -65,6 +66,18 @@ function Form() {
     if (step === 5) {
       return null;
     }
+    setStep(5);
+    try {
+      const response = await axios.post(
+        "https://multi-step-form.pl/submit",
+        form
+      );
+      console.log(response);
+    } catch (error: any) {
+      console.error("Error:", error);
+    }
+    setForm(initialForm);
+    setStep(1);
   };
 
   return (
