@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useMultiStepForm } from "../hooks/useMultiStepForm";
 import { useError } from "../hooks/useError";
+import Input from "./input";
 import Step from "./step";
 
 function Form() {
@@ -69,82 +70,58 @@ function Form() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-auto w-full max-w-md rounded-lg bg-white shadow-xl"
+      className="w-full max-w-md mx-auto bg-white rounded-lg shadow-xl"
     >
-      <div className="flex justify-between rounded p-8">
+      <div className="flex justify-between p-8 rounded">
         <Step step={1} currentStep={step} />
         <Step step={2} currentStep={step} />
         <Step step={3} currentStep={step} />
         <Step step={4} currentStep={step} />
       </div>
-      <div className="space-y-2 px-8 flex justify-start flex-col gap-2 h-36">
+      <div className="flex flex-col justify-start gap-2 px-8 space-y-2 h-36">
         {step === 1 ? (
           <>
-            <span>{error.firstName}</span>
-            <motion.input
+            <Input
+              error={error.firstName}
               name="firstName"
               value={form.firstName}
               placeholder="First Name"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.2 }}
               onChange={updateField}
-              className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
-            <span>{error.lastName}</span>
-            <motion.input
+            <Input
+              error={error.lastName}
               name="lastName"
               value={form.lastName}
               placeholder="Last Name"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.2 }}
               onChange={updateField}
-              className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
           </>
         ) : step === 2 ? (
           <>
-            <span>{error.phone}</span>
-            <motion.input
+            <Input
+              error={error.phone}
               name="phone"
               value={form.phone}
               placeholder="Phone"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.2 }}
               onChange={updateField}
-              className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
-            <span>{error.email}</span>
-            <motion.input
+            <Input
+              error={error.email}
               name="email"
               value={form.email}
               placeholder="Email"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.2 }}
               onChange={updateField}
-              className="border-2 border-neutral-100 w-full rounded-lg p-2"
             />
           </>
         ) : step === 3 ? (
-          <>
-            <span>{error.budget}</span>
-            <motion.input
-              name="budget"
-              type="number"
-              min="0"
-              max="99999"
-              value={form.budget}
-              placeholder="Estimated budget"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.2 }}
-              onChange={updateField}
-              className="border-2 border-neutral-100 w-full rounded-lg p-2"
-            />
-          </>
+          <Input
+            error={error.budget}
+            name="budget"
+            value={form.budget}
+            placeholder="Estimated budget"
+            onChange={updateField}
+            number
+          />
         ) : step === 4 ? (
           <>
             <motion.textarea
@@ -156,7 +133,7 @@ function Form() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
               onChange={updateField}
-              className="border-2 border-neutral-100 w-full rounded-lg p-2 h-full"
+              className="w-full h-full p-2 border-2 rounded-lg border-neutral-100"
             />
           </>
         ) : step === 5 ? (
@@ -165,7 +142,7 @@ function Form() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
-              className="h-4 w-5/6 rounded bg-neutral-100"
+              className="w-5/6 h-4 rounded bg-neutral-100"
             >
               <span>{form.lastName}</span>
             </motion.div>
@@ -173,7 +150,7 @@ function Form() {
         ) : null}
       </div>
       <div className="px-8 pb-8">
-        <div className="mt-10 flex justify-between">
+        <div className="flex justify-between mt-10">
           <button
             type="button"
             onClick={stepBack}
