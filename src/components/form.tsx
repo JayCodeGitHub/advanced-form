@@ -78,7 +78,7 @@ function Form() {
         <Step step={3} currentStep={step} />
         <Step step={4} currentStep={step} />
       </div>
-      <div className="flex flex-col justify-start gap-2 px-8 space-y-2 h-44">
+      <div className="flex flex-col justify-start gap-2 px-8 space-y-2 h-60">
         {step === 1 ? (
           <>
             <Input
@@ -133,7 +133,7 @@ function Form() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
               onChange={updateField}
-              className="w-full h-full p-2 border-2 rounded-lg border-neutral-100"
+              className="w-full p-2 border-2 rounded-lg h-36 border-neutral-100"
             />
           </>
         ) : step === 5 ? (
@@ -142,9 +142,16 @@ function Form() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
-              className="w-5/6 h-4 rounded bg-neutral-100"
+              className="flex flex-col w-full gap-1"
             >
-              <span>{form.lastName}</span>
+              <p>First Name: {form.firstName}</p>
+              <p>Last Name: {form.lastName}</p>
+              <p>Phone: {form.phone}</p>
+              <p>Email: {form.email}</p>
+              <p>Budget: {form.budget}</p>
+              {form.informations ? (
+                <p>Additional information: {form.informations}</p>
+              ) : null}
             </motion.div>
           </>
         ) : null}
