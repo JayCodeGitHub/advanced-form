@@ -9,5 +9,6 @@ Multi step form with data validation based on react without using libraries such
 
 ## Preview ##
 
-![form](https://github.com/JayCodeGitHub/advanced-form/assets/66550003/a0469d87-76a8-4403-bd92-5ff3be88bc5e)
 
+
+![form](https://github.com/JayCodeGitHub/advanced-form/assets/66550003/7ce4b22f-a8ae-416b-8f31-79ac8808c344)
